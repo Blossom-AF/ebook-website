@@ -73,27 +73,27 @@ export default function WaitlistPage() {
   }, [])
 
   const stats = [
-    { target: 10,  fmt: (v: number) => `$${v}K`,  label: 'In closed revenue', gold: true },
-    { target: 5,   fmt: (v: number) => `${v}`,     label: 'Days to close',      gold: false },
-    { target: 25,  fmt: (v: number) => `${v}`,     label: 'DM templates',       gold: false },
-    { target: 100, fmt: (v: number) => `${v}K+`,   label: 'LinkedIn followers', gold: false },
+    { target: 100, fmt: (v: number) => `${v}K+`,  label: 'LinkedIn followers', gold: true  },
+    { target: 10,  fmt: (v: number) => `$${v}K`,  label: 'In closed revenue',  gold: false },
+    { target: 10,  fmt: (v: number) => `${v}+`,   label: 'High-ticket clients', gold: false },
+    { target: 20,  fmt: (v: number) => `${v}+`,   label: 'Countries reached',   gold: false },
   ]
 
   const features = [
     {
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={22} height={22}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>,
-      title: 'Execution Mindset',
-      desc: 'Build the systems that make the right people see you as the only real choice, not just another option.',
+      title: 'The $10K Framework',
+      desc: 'The exact message structure Blossom used to close $10,000 in LinkedIn clients in 5 days — broken down step by step so you can copy it.',
     },
     {
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={22} height={22}><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,
-      title: 'Authority & Wealth',
-      desc: 'Close the gap between how good you are and how you look online. That gap is costing you money.',
+      title: 'Profile to Pipeline',
+      desc: 'How to position your LinkedIn profile so that the right people reach out to you first — before you even send a single DM.',
     },
     {
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={22} height={22}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
-      title: 'Proven Templates',
-      desc: 'Get the 25 exact DM scripts that actually work to convert impressions directly into high-ticket clients.',
+      title: '25 Word-for-Word DM Scripts',
+      desc: 'Real messages you can send today. Each one is designed to start a real conversation and move it towards a paid engagement — without feeling salesy.',
     },
   ]
 
