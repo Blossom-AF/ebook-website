@@ -4,7 +4,7 @@ import { type CSSProperties, useEffect, useRef, useState } from 'react'
 
 const SHEET_ID = '1gm8eB2CJmSe-ABTuDnwk1jGsnoW9EwpkAC768va80sE'
 const WA_NUMBER = '2347037649904'
-const WA_MSG    = encodeURIComponent('Hi Blossom, I would like to join the waitlist for your free $10K Framework ebook')
+const WA_MSG    = encodeURIComponent('Hi Blossom, I would like to join the waitlist for your free $10K Framework ebook. I will save your contact as Blossom now.')
 const WA_URL    = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`
 
 const BlossomIcon = ({ size = 36, fill = '#0D0B08' }: { size?: number; fill?: string }) => (
