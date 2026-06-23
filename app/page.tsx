@@ -227,6 +227,7 @@ export default function WaitlistPage() {
 
       {showForm && <WaitlistModal onClose={() => setShowForm(false)} />}
 
+      <NavBar />
 
       <section className="wl-hero">
         <div className="wl-inner" style={{ position: 'relative', zIndex: 1 }}>
@@ -296,7 +297,7 @@ export default function WaitlistPage() {
   )
 }
 
-function NavBar({ onJoin }: { onJoin: () => void }) {
+function NavBar() {
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20)
@@ -310,7 +311,6 @@ function NavBar({ onJoin }: { onJoin: () => void }) {
           <BlossomIcon size={32} fill="#0D0B08" />
           <span className="wl-logo-text" style={{ ...SYNE }}>Blossom Affia</span>
         </a>
-        <button onClick={onJoin} className="wl-enrol-btn wl-nav-enrol">Join the Waitlist &rarr;</button>
       </div>
     </nav>
   )
