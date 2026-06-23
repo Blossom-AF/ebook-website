@@ -43,6 +43,7 @@ const ROLES = [
   'Coach',
   'Consultant',
   'Business Owner',
+  'Career Professional',
   'Student',
   'Other',
 ]
