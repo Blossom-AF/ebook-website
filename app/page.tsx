@@ -375,7 +375,7 @@ function WaitlistModal({ onClose }: { onClose: () => void }) {
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <Field label="Full Name"      type="text"  value={name}  onChange={setName}  placeholder="e.g. Amara Obi"            required />
-          <Field label="Phone Number"   type="tel"   value={phone} onChange={setPhone} placeholder="e.g. +234 801 234 5678"    required />
+          <Field label="WhatsApp Number" type="tel"   value={phone} onChange={setPhone} placeholder="e.g. +234 801 234 5678"    required />
           <Field label="Email Address"  type="email" value={email} onChange={setEmail} placeholder="e.g. amara@email.com"      required />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
