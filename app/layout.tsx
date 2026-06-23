@@ -7,6 +7,7 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit', display: 
 export const metadata: Metadata = {
   title: 'The $10K Message — Blossom Affia',
   description: 'How I closed $10,000 in LinkedIn clients in 5 days. Join the waitlist for the free ebook.',
+  icons: { icon: '/favicon.svg' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
