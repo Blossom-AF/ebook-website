@@ -76,7 +76,7 @@ export default function WaitlistPage() {
     { target: 100, fmt: (v: number) => `${v}K+`,  label: 'LinkedIn followers', gold: true  },
     { target: 50,  fmt: (v: number) => `${v}+`,   label: 'Weekly leads generated', gold: false },
     { target: 45,  fmt: (v: number) => `${v}+`,   label: 'High-ticket clients', gold: false },
-    { target: 20,  fmt: (v: number) => `${v}+`,   label: 'Countries reached',   gold: false },
+    { target: 50,  fmt: (v: number) => `${v}+`,   label: 'Countries reached',   gold: false },
   ]
 
   const features = [
