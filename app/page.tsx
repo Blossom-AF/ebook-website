@@ -227,7 +227,6 @@ export default function WaitlistPage() {
 
       {showForm && <WaitlistModal onClose={() => setShowForm(false)} />}
 
-      <NavBar onJoin={() => setShowForm(true)} />
 
       <section className="wl-hero">
         <div className="wl-inner" style={{ position: 'relative', zIndex: 1 }}>
