@@ -14,7 +14,9 @@ Live waitlist site for Blossom Affia's ebook "The $10K Message" at playbook.blos
 - Auto-deploy to Vercel (scope `blossom-afs-projects`) on push to `master` via GitHub Actions.
 - GHL wired: every lead is upserted into Blossom's sub-account (`ld6RKqi9ZSXAtErW5WTJ`) and tagged `10k-message-ebook`. Best-effort, runs after the sheet append.
 
+## Done 2026-06-24
+- `GHL_PIT_TOKEN` and `GHL_LOCATION_ID` added to Vercel project `ebook-website` (team `blossom-afs-projects`), Production, encrypted. Deployed and live at playbook.blossomaffia.site. Smoke test passed (home 200, API 405 on GET, 400 on empty POST).
+
 ## Pending (manual, on Blossom's side)
-- Add `GHL_PIT_TOKEN` and `GHL_LOCATION_ID` to the Vercel project env vars (currently only in local `.env.local`). Without them the deployed API skips GHL silently.
-- Build the GHL workflow triggered by the `10k-message-ebook` tag so the welcome email fires immediately on tag add (Route A).
+- Build the GHL workflow triggered by the `10k-message-ebook` tag so the welcome email fires immediately on tag add (Route A). Email copy is ready.
 - Email deliverability: authenticate a sending domain in GHL and send from that domain so emails stop landing in spam (see lessons-learned).

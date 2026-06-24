@@ -286,7 +286,7 @@ export default function WaitlistPage() {
             <span style={{ ...SYNE, fontWeight: 700, fontSize: 15, color: '#D4B200' }}>Blossom Affia</span>
           </a>
           <span style={{ ...OUTFIT, fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>
-            &copy; 2025 Blossom Affia. All Rights Reserved.
+            &copy; 2026 Blossom Affia. All Rights Reserved.
           </span>
           <div style={{ display: 'flex', gap: 20 }}>
             <a href="#" className="wl-footer-link" style={{ ...OUTFIT }}>Privacy</a>
