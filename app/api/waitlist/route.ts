@@ -6,7 +6,11 @@ const SHEET_ID = '1gm8eB2CJmSe-ABTuDnwk1jGsnoW9EwpkAC768va80sE'
 // Build the welcome-email workflow on this exact tag so it fires the moment the tag is added.
 const GHL_TAG = '10k-message-ebook'
 
-type Lead = { name: string; phone: string; email: string; role: string }
+type Lead = { name: string; phone: string; email: string; role: string; emailConsent?: boolean }
+
+// Extra tag applied only when the lead ticks the email opt-in.
+// Target marketing/newsletter workflows on this tag so you only email people who consented.
+const GHL_OPTIN_TAG = 'email-opt-in'
 
 // Adds (or updates) the contact in Blossom's GHL sub-account and applies the tag.
 // Best-effort: a GHL failure must never lose the lead or block the response.
@@ -33,7 +37,7 @@ async function addToGHL(lead: Lead): Promise<void> {
       firstName: lead.name,
       email: lead.email,
       phone: lead.phone,
-      tags: [GHL_TAG],
+      tags: lead.emailConsent ? [GHL_TAG, GHL_OPTIN_TAG] : [GHL_TAG],
       source: 'The $10K Message waitlist',
     }),
   })
@@ -63,21 +67,23 @@ async function getAccessToken(): Promise<string> {
 
 export async function POST(req: Request) {
   try {
-    const { name, phone, email, role } = await req.json()
+    const { name, phone, email, role, emailConsent } = await req.json()
 
     if (!name || !phone || !email || !role) {
       return NextResponse.json({ error: 'All fields required' }, { status: 400 })
     }
 
+    // emailConsent is the opt-in checkbox. Stored as Yes/No in column F. Not required to submit.
+    const consent = emailConsent ? 'Yes' : 'No'
     const timestamp = new Date().toISOString()
     const token = await getAccessToken()
 
     const appendRes = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Submissions!A:E:append?valueInputOption=RAW&insertDataOption=OVERWRITE`,
+      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Submissions!A:F:append?valueInputOption=RAW&insertDataOption=OVERWRITE`,
       {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ values: [[timestamp, name, phone, email, role]] }),
+        body: JSON.stringify({ values: [[timestamp, name, phone, email, role, consent]] }),
       }
     )
 
@@ -86,7 +92,7 @@ export async function POST(req: Request) {
 
     // Best-effort GHL sync. Logged on failure, never blocks the lead capture or the redirect.
     try {
-      await addToGHL({ name, phone, email, role })
+      await addToGHL({ name, phone, email, role, emailConsent })
     } catch (ghlErr) {
       console.error('GHL sync error:', ghlErr)
     }

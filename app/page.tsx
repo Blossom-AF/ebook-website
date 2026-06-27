@@ -322,6 +322,7 @@ function WaitlistModal({ onClose }: { onClose: () => void }) {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [role,  setRole]  = useState('')
+  const [emailOptIn, setEmailOptIn] = useState(true)
   const [busy,  setBusy]  = useState(false)
   const [err,   setErr]   = useState('')
 
@@ -333,7 +334,7 @@ function WaitlistModal({ onClose }: { onClose: () => void }) {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, email, role }),
+        body: JSON.stringify({ name, phone, email, role, emailConsent: emailOptIn }),
       })
       if (!res.ok) throw new Error('Failed')
       window.location.href = WA_URL
@@ -397,6 +398,18 @@ function WaitlistModal({ onClose }: { onClose: () => void }) {
               ))}
             </select>
           </div>
+
+          <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={emailOptIn}
+              onChange={e => setEmailOptIn(e.target.checked)}
+              style={{ accentColor: '#D4B200', width: 16, height: 16, marginTop: 2, flexShrink: 0, cursor: 'pointer' }}
+            />
+            <span style={{ ...OUTFIT, fontSize: 13, lineHeight: 1.55, color: 'rgba(255,255,255,0.55)' }}>
+              Yes, send me LinkedIn growth tips and related resources from Blossom Affia by email. You can unsubscribe anytime.
+            </span>
+          </label>
 
           {err && <p style={{ ...OUTFIT, fontSize: 13, color: '#ff6b6b', margin: 0 }}>{err}</p>}
 
